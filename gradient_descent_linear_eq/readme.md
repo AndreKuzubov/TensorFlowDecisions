@@ -6,7 +6,7 @@
 
 <b>Решим</b> задачу методом градиентного спуска, по ошибке равной средней квадратичной (НКО), тогда функция ошибки f будет равна
 
-<img src="https://latex.codecogs.com/svg.latex? f(k,l) = (kx+l-y)^2"/>.  
+<img src="https://latex.codecogs.com/svg.latex?f(k,l)=(kx+l-y)^2"/>.  
 
 
 Зная некоторые 
@@ -14,15 +14,15 @@
 и <img src="https://latex.codecogs.com/svg.latex?l_i"/> 
  мы можем найти:
  
-<img src="https://latex.codecogs.com/svg.latex?k_{i+1} = k_i - \lambda f'_k (k_i,l_i) "/> <br>
+<img src="https://latex.codecogs.com/svg.latex?k_{i+1}=k_i-\lambda%20f'_k(k_i,l_i)"/> <br>
  
-<img src="https://latex.codecogs.com/svg.latex?l_{i+1} = l_i -  \lambda f'_l (k_i,l_i)"/> <br>
+<img src="https://latex.codecogs.com/svg.latex?l_{i+1}=l_i-\lambda%20f'_l(k_i,l_i)"/> <br>
  
 Раскроем частные производные: 
 
-<img src="https://latex.codecogs.com/svg.latex?k_{i+1} = k_i - 2 \lambda x (k_i x + l_i-y) "/> <br>
+<img src="https://latex.codecogs.com/svg.latex?k_{i+1}=k_i-2\lambda%20x(k_i%20x+l_i-y)"/> <br>
  
-<img src="https://latex.codecogs.com/svg.latex?l_{i+1} = l_i - 2 \lambda  (k_i x + l_i-y)"/> <br>
+<img src="https://latex.codecogs.com/svg.latex?l_{i+1}=l_i-2\lambda(k_i%20x+l_i-y)"/> <br>
  
 
 
@@ -42,7 +42,7 @@
 
 #### Структура проекта
 
-*[X] linear_eq.py - работа апроксиматора без применения библиотеки tensorflow
+* [X] linear_eq.py - работа апроксиматора без применения библиотеки tensorflow
      
      <b>Запуск:</b>
             
@@ -52,7 +52,7 @@
   
      
      
-*[X] linear_eq_tensorflow.py - работа апроксиматора с применением библиотеки tensorflow, с показом результатов через tensorboard 
+* [X] linear_eq_tensorflow.py - работа апроксиматора с применением библиотеки tensorflow, с показом результатов через tensorboard 
  
      <b>Запуск:</b>
      
