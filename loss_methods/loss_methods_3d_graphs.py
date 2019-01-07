@@ -52,4 +52,4 @@ absDiff = lambda X, Y: abs(X - Y)
 if __name__ == "__main__":
     plot3d_rotate_gif(squaredDiff, saveAsFile='log/squaredDiff.gif')
     plot3d_rotate_gif(absDiff, saveAsFile='log/absDiff.gif')
-    plot3d_rotate_gif(squaredEntropy, saveAsFile='log/squaredEntropy.gif', Y=np.arange(0.001, 10, 0.01))
+    plot3d_rotate_gif(squaredEntropy, saveAsFile='log/squaredEntropy.gif', Y=np.arange(0.001, 1, 0.01), X=np.arange(-1, 1, 0.01))
