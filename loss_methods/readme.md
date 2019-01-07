@@ -7,17 +7,17 @@
 
 #### Квадрат разности: <img src="https://latex.codecogs.com/svg.latex?e=(x-y)^2"/>
 
-![](log/linear_eq/squaredDiff.gif)<br>
+![](log/squaredDiff.gif)<br>
 
 
 #### Модуль разности разности: <img src="https://latex.codecogs.com/svg.latex?e=|x-y|"/>
 
-![](log/linear_eq/absDiff.gif)<br>
+![](log/absDiff.gif)<br>
 
 
 #### Перекресная энтропия: <img src="https://latex.codecogs.com/svg.latex?e=-X*log(Y)"/>
 
-![](log/linear_eq/squaredEntropy.gif)<br>
+![](log/squaredEntropy.gif)<br>
 
 ## Выводы
 TODO: оценить скорость сходимости в ноль. за сколько по градиентному спуску проходит к нулю (и точность) для разных функций ошибок 
