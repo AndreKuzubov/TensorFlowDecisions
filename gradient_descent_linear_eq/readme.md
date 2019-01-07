@@ -63,3 +63,9 @@
             >> tensorboard --logdir=log/linear_eq_tensorflow/tmp 
         
      далее пройти по ссылке: [http://localhost:6006](http://localhost:6006)
+    
+     
+     
+## Используемые библиотеки 
+    
+ - keras

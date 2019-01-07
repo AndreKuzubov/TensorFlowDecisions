@@ -12,6 +12,12 @@
     
 * [X] [/loss_methods](loss_methods) - 3-х мерные графики функций ошибок и оценка работы 
 
+* [ ] [/four_quarters](four_quarters) - пример работы нейронной сети на определение четверти координатной системы для точки 
+    <img src="https://latex.codecogs.com/svg.latex?(x,y)"/>
+    
+ ## Enviroment
+   
+   Python 3.6.7 |Anaconda, Inc.| 
 
  ## License
 ```
