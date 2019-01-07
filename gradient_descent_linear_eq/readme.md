@@ -52,7 +52,7 @@
   
      
      
-* [X] [linear_eq_tensorflow.py](https://github.com/AndreKuzubov/TensorFlowDecisions/blob/master/gradient_descent_linear_eq/linear_eq_tensorflow.py) - работа апроксиматора с применением библиотеки tensorflow, с показом результатов через tensorboard 
+* [X] [linear_eq_tensorflow.py](linear_eq_tensorflow.py) - работа апроксиматора с применением библиотеки tensorflow, с показом результатов через tensorboard 
      
      Поиск частных производных для градиентного спуска производится автоматически библиотекой tensorflow
      
