@@ -6,7 +6,8 @@
     <b>Постановка задачи:</b> Дан набор точек <img src="https://latex.codecogs.com/svg.latex?(x,y)"/>, надо найти коэффициенты <img src="https://latex.codecogs.com/svg.latex?(k,l)" />   для функции прямой типа
     <img src="https://latex.codecogs.com/svg.latex?y=kx+l"/>.  
 
-
+* [X] [/perceptron_1x](https://github.com/AndreKuzubov/TensorFlowDecisions/tree/master/perceptron_1x) - Однослойный перцептрон  
+    <img src="https://latex.codecogs.com/svg.latex?Y=f(\sum{XW}+L)"/>
 
  ## License
 ```

@@ -48,8 +48,8 @@ y - выходной вектор.
         
      далее пройти по ссылке: [http://localhost:6006](http://localhost:6006)
      
-     <b>Результаты</b>
-     
+     <b>Результаты:</b>
+
      ![classifications.gif](https://github.com/AndreKuzubov/TensorFlowDecisions/blob/dev/perceptron_1x/log/binary_number_classification/classifications.gif?raw=true)
 
 
