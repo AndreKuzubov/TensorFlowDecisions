@@ -11,7 +11,7 @@ y - выходной вектор.
 
 #### Структура проекта
 
-* [X] [binary_number_classification.py](https://github.com/AndreKuzubov/TensorFlowDecisions/blob/dev/perceptron_1x/binary_number_classification.py)  - 
+* [X] [binary_number_classification.py](https://github.com/AndreKuzubov/TensorFlowDecisions/blob/master/perceptron_1x/binary_number_classification.py)  - 
     
     Рассмотрим простейший пример нейронный сети на основе перцептрона
     из входного вектора размерностью 1
@@ -46,7 +46,7 @@ y - выходной вектор.
      
      <b>Результаты:</b>
 
-     ![classifications.gif](https://github.com/AndreKuzubov/TensorFlowDecisions/blob/dev/perceptron_1x/log/binary_number_classification/classifications.gif?raw=true)
+     ![classifications.gif](https://github.com/AndreKuzubov/TensorFlowDecisions/blob/master/perceptron_1x/log/binary_number_classification/classifications.gif?raw=true)
 
 
 ## Выводы
