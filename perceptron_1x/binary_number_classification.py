@@ -9,6 +9,8 @@ import numpy as np
 import glob
 from utils import imageUtils
 
+# import if needed
+from utils.specificFixs import *
 
 def generateXY(batchSize, israndom=True):
     x = np.array([[random.random() if israndom else i / float(batch_size)] for i in range(batchSize)])
@@ -34,7 +36,7 @@ if __name__ == "__main__":
     tf.summary.scalar(name="b", tensor=b[0])
     tf.summary.histogram(name="w", values=w)
 
-    init = tf.initialize_all_variables()
+    init = tf.global_variables_initializer()
     merged_summary_op = tf.summary.merge_all()
     with tf.Session() as sess:
         sess.run(init)

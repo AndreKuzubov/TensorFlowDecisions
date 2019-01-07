@@ -1,5 +1,13 @@
+import sys
+# для запуска из родительской и дочерней папок
+sys.path.append('../')
+
 import random
 import tensorflow as tf
+
+# import if needed
+from utils.specificFixs import *
+
 
 
 def generateXY(batch_size):
@@ -21,7 +29,7 @@ if __name__ == "__main__":
     k = tf.Variable(tf.random_normal((1,), dtype=tf.float32), name='k')
     l = tf.Variable(tf.random_normal((1,), dtype=tf.float32), name='l')
 
-    y_pred = tf.mul(x, k) + l
+    y_pred = tf.multiply(x, k) + l
     loss = tf.reduce_sum((y - y_pred) ** 2)
     optimizer = tf.train.GradientDescentOptimizer(learning_rate=h).minimize(loss)
 
@@ -29,7 +37,7 @@ if __name__ == "__main__":
     tf.summary.scalar(name="k", tensor=k[0])
     tf.summary.scalar(name="l", tensor=l[0])
 
-    init = tf.initialize_all_variables()
+    init = tf.global_variables_initializer()
     merged_summary_op = tf.summary.merge_all()
     with tf.Session() as sess:
 
