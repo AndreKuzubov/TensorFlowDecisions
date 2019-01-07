@@ -20,7 +20,7 @@ y - выходной вектор.
 
 #### Структура проекта
 
-* [X] binary_number_classification.py  - 
+* [X] [binary_number_classification.py](https://github.com/AndreKuzubov/TensorFlowDecisions/blob/dev/perceptron_1x/binary_number_classification.py)  - 
     
    <b>Постановка задачи:</b>
     обучить ИНС выбирать числа больше 0.8
@@ -50,7 +50,7 @@ y - выходной вектор.
      
      <b>Результаты</b>
      
-     ![classifications.gif](log/binary_number_classification/tmp/classifications.gif)
+     ![classifications.gif](https://github.com/AndreKuzubov/TensorFlowDecisions/blob/dev/perceptron_1x/log/binary_number_classification/classifications.gif?raw=true)
 
 
 ## Выводы
