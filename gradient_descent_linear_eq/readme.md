@@ -29,12 +29,12 @@
 
 #### Результаты работы 
 
- ![](log/linear_eq/loss_scalars.png)
-    _Изменение ошибки градиентного спуска_
+![](log/linear_eq/loss_scalars.png)<br>
+*Изменение ошибки градиентного спуска*
     
     
- ![](log/linear_eq/k_l_scalars.png)
-     _Изменение k и l по мере градиентного спуска_
+![](log/linear_eq/k_l_scalars.png)<br>
+*Изменение k и l по мере градиентного спуска*
 
  
 
