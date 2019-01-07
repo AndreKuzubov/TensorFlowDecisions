@@ -42,7 +42,7 @@
 
 #### Структура проекта
 
-* [X] linear_eq.py - работа апроксиматора без применения библиотеки tensorflow
+* [X] [linear_eq.py](https://github.com/AndreKuzubov/TensorFlowDecisions/blob/master/gradient_descent_linear_eq/linear_eq.py) - работа апроксиматора без применения библиотеки tensorflow
      
      <b>Запуск:</b>
             
@@ -52,7 +52,7 @@
   
      
      
-* [X] linear_eq_tensorflow.py - работа апроксиматора с применением библиотеки tensorflow, с показом результатов через tensorboard 
+* [X] [linear_eq_tensorflow.py](https://github.com/AndreKuzubov/TensorFlowDecisions/blob/master/gradient_descent_linear_eq/linear_eq_tensorflow.py) - работа апроксиматора с применением библиотеки tensorflow, с показом результатов через tensorboard 
  
      <b>Запуск:</b>
      
