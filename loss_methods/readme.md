@@ -19,6 +19,8 @@
 
 ![](log/squaredEntropy.gif)<br>
 
+**TODO: добавить описание про софтмакс энтропию tf.nn.softmax_cross_entropy_with_logits = -tf.reduce_sum(labels * tf.log(tf.nn.softmax(logits) ), 1)**
+
 ## Выводы
 TODO: оценить скорость сходимости в ноль. за сколько по градиентному спуску проходит к нулю (и точность) для разных функций ошибок 
 
