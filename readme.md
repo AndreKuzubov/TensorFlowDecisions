@@ -8,6 +8,9 @@
 
 * [X] [/perceptron_1x](https://github.com/AndreKuzubov/TensorFlowDecisions/tree/master/perceptron_1x) - Однослойный перцептрон  
     <img src="https://latex.codecogs.com/svg.latex?Y=f(\sum{XW}+L)"/>
+    
+* [ ] [/image_processing](image_processing) - Обработка изображений   
+    
 
  ## License
 ```
