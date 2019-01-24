@@ -10,13 +10,29 @@ import numpy as np
 import glob
 from utils import imageUtils
 from utils.specificFixs import *
+from PIL import Image
+import PIL.ImageColor
 
 old_v = tf.logging.get_verbosity()
 tf.logging.set_verbosity(tf.logging.ERROR)
 
+def showImages(batchImages1d):
+    images2d = np.reshape(batchImages1d, (-1,28,28))
+    images2d *=255.
+    for image2d in images2d:
+        image = Image.fromarray(image2d.astype(np.uint8))
+        image.show()
+
+
+
 
 if __name__ == "__main__":
     mnist = mnist_data.input_data.read_data_sets("log/",one_hot=True)
+
+    # show images
+    imagesBatch,_ = mnist.train.next_batch(10)
+    showImages(imagesBatch)
+
     x = tf.placeholder(tf.float32, [None, 784])
 
     W_relu = tf.Variable(tf.truncated_normal([784, 100], stddev=0.1))
@@ -52,4 +68,3 @@ if __name__ == "__main__":
 
     print("Точность: %s" %
           sess.run(accuracy, feed_dict={x: mnist.test.images, y_: mnist.test.labels, keep_probability: 1.}))
-
