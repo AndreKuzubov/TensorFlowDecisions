@@ -11,6 +11,7 @@
     
 * [X] [/image_processing](image_processing) - Обработка изображений   
     
+* [ ] [/mnist](mnist) - Mnist - распознавание цифр  
 
  ## License
 ```
