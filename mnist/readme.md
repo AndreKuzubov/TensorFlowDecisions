@@ -12,11 +12,18 @@
 
 2х слойная сверка + 2х слойный перцептон:
    
+  <b>Запуск:</b>
+     
+            >> cd <dir>/mnist
+            >> python mnist_conv.py
+            >> tensorboard --logdir=log/mnist_conv/tmp 
+        
+     далее пройти по ссылке: [http://localhost:6006](http://localhost:6006)
 
     
 #### Обнаружение
     
-    - активация сверточной модели на разных участках
- 
- - распознавание
+ - активация сверточной модели на разных участках
+ - [Tensorflow detection model zoo](https://www.asozykin.ru/deep_learning/2018/07/24/Object-Detection-using-TensorFlow.html)   
+
 

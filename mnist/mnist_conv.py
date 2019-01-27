@@ -10,6 +10,7 @@ import numpy as np
 import glob
 from utils import imageUtils
 from utils.specificFixs import *
+from utils.tensorUtils import *
 from PIL import Image
 import PIL.ImageColor
 
@@ -71,11 +72,23 @@ if __name__ == "__main__":
     corrent_prediction = tf.equal(tf.argmax(y_conv, 1), tf.argmax(y, 1))
     accuracy = tf.reduce_mean(tf.cast(corrent_prediction, tf.float32))
 
+    loc = locals()
+    initAllSummaries(
+        {k: loc[k] for k in loc.keys() if isinstance(loc[k], (tf.Variable, tf.Tensor))}
+    )
+    merged_summary_op = tf.summary.merge_all()
     with tf.Session() as sess:
         sess.run(tf.initialize_all_variables())
-        for i in range(1000):
+
+        writter = tf.summary.FileWriter('log/mnist_conv/tmp')
+        writter.add_graph(sess.graph)
+        for i in range(100):
             batch_xs, batch_ys = mnist.train.next_batch(64)
-            _,accuracy_val = sess.run((train_step,accuracy,), feed_dict={x: batch_xs, y: batch_ys, keep_prob: 0.5})
+
+            _, accuracy_val, summary = sess.run((train_step, accuracy, merged_summary_op,),
+                                                feed_dict={x: batch_xs, y: batch_ys, keep_prob: 0.5})
+            writter.add_summary(summary)
             print("train accuracy = %s" % (accuracy_val,))
 
+        writter.close()
         print(sess.run(accuracy, feed_dict={x: mnist.test.images, y: mnist.test.labels, keep_prob: 1.}))
