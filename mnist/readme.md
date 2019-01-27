@@ -8,7 +8,7 @@
 2 слойный перцептрон  
 
 #### На Свертки  
-[mnist_conv.py.py](mnist_conv.py.py)
+[mnist_conv.py.py](mnist_conv.py)
 
 2х слойная сверка + 2х слойный перцептон:
    
