@@ -18,5 +18,7 @@
   - https://apptractor.ru/develop/obnaruzhenie-obektov-s-pomoshhyu-glubokogo-obucheniya-na-raspberry-pi.html
   - https://habr.com/ru/post/306568/
   - https://habr.com/ru/company/dataart/blog/350120/
+ - [Tensorflow detection model zoo](https://www.asozykin.ru/deep_learning/2018/07/24/Object-Detection-using-TensorFlow.html)   
+
     
     
