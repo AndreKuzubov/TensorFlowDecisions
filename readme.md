@@ -10,7 +10,8 @@
     <img src="https://latex.codecogs.com/svg.latex?Y=f(\sum{XW}+L)"/>
     
 * [X] [/image_processing](image_processing) - Обработка изображений   
-    
+
+* [ ] [/detection](detection) - Обнаружение и локализация изображения 
 
  ## License
 ```
