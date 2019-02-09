@@ -12,6 +12,8 @@
 
 [mnist_keras.py](mnist_keras.py) - с использованием библиотеки keras
 
+[mnist_detection.py](mnist_detection.py) - распознование с обнаружением
+
 2х слойная сверка + 2х слойный перцептон:
    
   <b>Запуск:</b>

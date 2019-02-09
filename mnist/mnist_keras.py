@@ -41,14 +41,6 @@ def next_test_batch():
     return batch_xs, batch_ys
 
 
-def showImages(batchImages1d):
-    images2d = np.reshape(batchImages1d, (-1, 28, 28))
-    images2d *= 255.
-    for image2d in images2d:
-        image = Image.fromarray(image2d.astype(np.uint8))
-        image.show()
-
-
 def training():
     model = Sequential()
     model.add(Convolution2D(32, kernel_size=(5, 5), padding='same'))
