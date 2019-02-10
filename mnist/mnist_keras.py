@@ -22,7 +22,7 @@ from keras.models import load_model
 old_v = tf.logging.get_verbosity()
 tf.logging.set_verbosity(tf.logging.ERROR)
 
-MODEL_PATH = "log/mnist_scale_stability/model.hdf5"
+MODEL_PATH = "log/mnist_keras/model.hdf5"
 if not os.path.exists(os.path.dirname(MODEL_PATH)):
     os.makedirs(os.path.dirname(MODEL_PATH))
 
@@ -74,12 +74,14 @@ def training():
               )
     print("finish...")
 
-    score = model.evaluate(test_xs, test_ys, verbose=0)
-    print("Test score %f " % score[0])
-    print("Test accuracy %f " % score[1])
 
 
 if __name__ == "__main__":
     print('mnist train size: %s ' % (mnist.train.num_examples))
     training()
+
     model = load_model(MODEL_PATH)
+    test_xs, test_ys = next_test_batch()
+    score = model.evaluate(test_xs, test_ys, verbose=0)
+    print("Test score %f " % score[0])
+    print("Test accuracy %f " % score[1])

@@ -22,13 +22,19 @@
             >> python mnist_conv.py
             >> tensorboard --logdir=log/mnist_conv/tmp 
         
-     далее пройти по ссылке: [http://localhost:6006](http://localhost:6006)
-§          
+   далее пройти по ссылке: [http://localhost:6006](http://localhost:6006)
+          
 #### Масштабированные изображения
 
 [mnist_scaled.py](mnist_scaled.py) 
 
-Обучение нейронной сети со входом большого размера распозновать маленькие и большие изображения цифр 
+Обучение нейронной сети со входом большого размера распозновать маленькие и большие изображения цифр
+
+<b>Показатели:</b>
+    
+    generate train/test batch 1000 
+    Test score 0.862113 
+    Test accuracy 0.819000 
 
 
  

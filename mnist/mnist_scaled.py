@@ -108,13 +108,16 @@ def training():
                              ]
                   )
     print("finish...")
-    test_xs, test_ys = next_batch(batch_size=100, istestbatch=True)
-    score = model.evaluate(test_xs, test_ys, verbose=0)
-    print("Test score %f " % score[0])
-    print("Test accuracy %f " % score[1])
+
 
 
 if __name__ == "__main__":
-    print('mnist train size: %s ' % (mnist.train.num_examples))
-    training()
+    # print('mnist train size: %s ' % (mnist.train.num_examples))
+    # training()
+
     model = load_model(MODEL_PATH)
+
+    test_xs, test_ys = next_batch(batch_size=1000, istestbatch=True)
+    score = model.evaluate(test_xs, test_ys, verbose=0)
+    print("Test score %f " % score[0])
+    print("Test accuracy %f " % score[1])
