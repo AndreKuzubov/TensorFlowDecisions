@@ -35,3 +35,17 @@
 #### Черно-белый фильтр
   
 ![](log/source_image.jpg)  ![](log/wbImage.jpg)<br>
+
+ 
+#### Обрезка
+
+с использованием keras
+  
+![](log/source_image.jpg)  ![](log/scroppingImage.jpg)<br>
+
+
+#### Приведение к размеру масштабированием
+
+с использованием keras
+  
+![](log/source_image.jpg)  ![](log/scallingImage.jpg)<br>
