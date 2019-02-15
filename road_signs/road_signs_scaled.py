@@ -24,6 +24,7 @@ from keras.layers import Dense, Dropout, Activation, Flatten, Reshape
 from keras.layers import Convolution2D, MaxPooling2D
 from keras.callbacks import ModelCheckpoint
 from keras.models import load_model
+from sklearn.utils import shuffle
 
 MODEL_PATH = "log/road_signs_scaled/road_signs_scaled.hdf5"
 if not os.path.exists(os.path.dirname(MODEL_PATH)):
@@ -71,56 +72,80 @@ def loadDataSet():
 
 
 def next_batch(batch_size=100):
-    files = glob.glob("dataset/GTSRB_Final_Training_Images/GTSRB/Final_Training/Images/*/*.ppm")
-    random.shuffle(files)
-
+    classes_dirs = glob.glob("dataset/GTSRB_Final_Training_Images/GTSRB/Final_Training/Images/*")
+    itemsCountForClass = int(batch_size / (len(classes_dirs) + 1))
     x_batch = []
     y_batch = []
-    for i in range(batch_size):
-        f = random.choice(files)
-        base_img = Image.new('RGB', (INPUT_IMAGE_SIZE, INPUT_IMAGE_SIZE), color='black')
+    for class_dir in classes_dirs:
+        files = glob.glob(class_dir + "/*.ppm")
 
-        image = Image.open(f)
-        sign_size = int(max(random.random() * INPUT_IMAGE_SIZE, INPUT_IMAGE_SIZE * 0.2))
-        image = image.resize((sign_size, sign_size), Image.ANTIALIAS)
-        paste_point = (
-            int(random.random() * (INPUT_IMAGE_SIZE - sign_size)),
-            int(random.random() * (INPUT_IMAGE_SIZE - sign_size)))
-        base_img.paste(image, box=(paste_point))
+        for i in range(itemsCountForClass):
+            f = random.choice(files)
+            base_img = Image.new('RGB', (INPUT_IMAGE_SIZE, INPUT_IMAGE_SIZE), color='black')
 
-        x = np.asarray(base_img, dtype=float)
-        x /= x.max()
+            image = Image.open(f)
+            sign_size = int(max(random.random() * INPUT_IMAGE_SIZE, INPUT_IMAGE_SIZE * 0.5))
+            image = image.resize((sign_size, sign_size), Image.ANTIALIAS)
+            paste_point = (
+                int(random.random() * (INPUT_IMAGE_SIZE - sign_size)),
+                int(random.random() * (INPUT_IMAGE_SIZE - sign_size)))
+            base_img.paste(image, box=(paste_point))
 
-        _sy = int(f[f.rfind("/") - 4:f.rfind("/")])
-        y = [0] * 43
-        y[_sy] = 1
-        y = np.array(y)
+            x = np.asarray(base_img, dtype=float)
+            x /= x.max()
 
-        x_batch += [x]
-        y_batch += [y]
+            _sy = int(f[f.rfind("/") - 4:f.rfind("/")])
+            y = [0] * 43
+            y[_sy] = 1
+            y = np.array(y)
+
+            x_batch += [x]
+            y_batch += [y]
+
+    for i in range(itemsCountForClass):
+        x_batch += [np.zeros((INPUT_IMAGE_SIZE, INPUT_IMAGE_SIZE, 3))]
+        y_batch += [np.zeros(43)]
+
+    x_batch, y_batch = shuffle(x_batch, y_batch)
 
     return np.array(x_batch), np.array(y_batch)
 
 
-def train():
+def train(restore=False):
     model = Sequential()
-    model.add(Convolution2D(32, kernel_size=(5, 5), padding='same'))
+    model.add(Convolution2D(32, kernel_size=(3, 3), padding='same'))
     model.add(Activation('relu'))
     model.add(MaxPooling2D(pool_size=(3, 3), strides=(3, 3), padding='same'))
 
-    model.add(Convolution2D(32, kernel_size=(5, 5), padding='same'))
+    model.add(Convolution2D(64, kernel_size=(3, 3), padding='same'))
     model.add(Activation('relu'))
     model.add(MaxPooling2D(pool_size=(2, 2), strides=(2, 2), padding='same'))
 
-    model.add(Convolution2D(32, kernel_size=(5, 5), padding='same'))
+    model.add(Convolution2D(64, kernel_size=(3, 3), padding='same'))
     model.add(Activation('relu'))
     model.add(MaxPooling2D(pool_size=(2, 2), strides=(2, 2), padding='same'))
 
-    model.add(Convolution2D(64, kernel_size=(5, 5), padding='same'))
+    model.add(Convolution2D(64, kernel_size=(3, 3), padding='same'))
     model.add(Activation('relu'))
     model.add(MaxPooling2D(pool_size=(2, 2), strides=(2, 2), padding='same'))
 
-    model.add(Convolution2D(64, kernel_size=(5, 5), padding='same'))
+    model.add(Convolution2D(64, kernel_size=(3, 3), padding='same'))
+    model.add(Activation('relu'))
+    model.add(MaxPooling2D(pool_size=(2, 2), strides=(2, 2), padding='same'))
+
+    model.add(Convolution2D(64, kernel_size=(3, 3), padding='same'))
+    model.add(Activation('relu'))
+    model.add(MaxPooling2D(pool_size=(2, 2), strides=(2, 2), padding='same'))
+
+    model.add(Convolution2D(64, kernel_size=(3, 3), padding='same'))
+    model.add(Activation('relu'))
+    model.add(MaxPooling2D(pool_size=(2, 2), strides=(2, 2), padding='same'))
+
+    model.add(Convolution2D(64, kernel_size=(3, 3), padding='same'))
+    model.add(Activation('relu'))
+    model.add(MaxPooling2D(pool_size=(2, 2), strides=(2, 2), padding='same'))
+
+    model.add(Convolution2D(64, kernel_size=(3, 3), padding='same'))
     model.add(Activation('relu'))
     model.add(MaxPooling2D(pool_size=(2, 2), strides=(2, 2), padding='same'))
 
@@ -128,23 +153,33 @@ def train():
     model.add(Dense(1024))
     model.add(Activation('relu'))
     model.add(Dropout(0.5))
+    model.add(Dense(1024))
+    model.add(Activation('relu'))
+    model.add(Dropout(0.5))
     model.add(Dense(43))
     model.add(Activation('softmax'))
     model.compile(loss="categorical_crossentropy", optimizer="adam", metrics=["accuracy"])
 
-    for i in range(3):
+    if (restore):
+        print("restore model ...")
+        model = load_model(MODEL_PATH)
+        test_xs, test_ys = next_batch(batch_size=1000)
+        score = model.evaluate(test_xs, test_ys, verbose=0)
+        print("Test score %f " % score[0])
+        print("Test accuracy %f " % score[1])
+
+    for i, epotchcount in enumerate( [1] * 5):
         print(" i = %s" % (i,))
-        batch_xs, batch_ys = next_batch(batch_size=2000)
-        test_xs, test_ys = next_batch(batch_size=100)
+        batch_xs, batch_ys = next_batch(batch_size=5000)
+        test_xs, test_ys = next_batch(batch_size=1000)
 
         model.fit(batch_xs, batch_ys,
                   verbose=1,
-                  epochs=10,
+                  epochs=epotchcount,
                   validation_data=(test_xs, test_ys),
                   validation_split=0.1,
                   callbacks=[ModelCheckpoint(filepath=MODEL_PATH,
                                              monitor="val_acc",
-                                             save_best_only=True,
                                              save_weights_only=False,
                                              mode="auto")
                              ]
@@ -159,7 +194,7 @@ def train():
 if __name__ == "__main__":
     loadDataSet()
 
-    train()
+    train(True)
 
     model = load_model(MODEL_PATH)
     test_xs, test_ys = next_batch(batch_size=1000)
